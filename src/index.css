@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities
+{
+  .active{
+    @apply border-b-2 border-b-blue-700 
+  }
+
+  .correct{
+    @apply bg-[#e7fbd3] text-[#0e630e]
+  }
+
+  .wrong{
+    @apply bg-pink-300 text-[#8B0000]
+  }
+
+  .nav-link{
+    @apply hover:opacity-85 h-full hover:bg-gray-500 py-4  px-4 rounded-md
+  }
+
+  .active-link{
+    @apply hover:opacity-85 h-full hover:bg-gray-500 bg-gray-950 py-4  px-4 rounded-md
+  }
+
+}
