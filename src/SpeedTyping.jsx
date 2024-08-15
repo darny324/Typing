@@ -15,12 +15,21 @@ const SpeedTyping = ({i = 0}) => {
   else if ( setting.level === 'Hard')
     typingSpeed = 450;
 
-  const [fontSize, setFontSize] = useState(setting.fontSize);
-  console.log(fontSize);
-
   const maxTime = Math.round((paragraphs[i].text.length / typingSpeed) * 60);
 
+  const fontSize = parseInt(setting.fontSize);
   
+  const font = (
+    fontSize === 12 ? 
+    'text-[12px] w-[520px]'
+    : fontSize === 16 ? 
+    'text-[16px] w-[520px]' 
+    : fontSize === 20 ? 
+    'text-[20px] w-[520px]'
+    : fontSize === 24 ? 
+    'text-[24px]  w-[600px]' 
+    : 'text-[28px]  w-[680px]'
+  );
 
   const [typingText, setTypingText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -47,7 +56,7 @@ const SpeedTyping = ({i = 0}) => {
     const content = Array.from(paragraphs[i].text).map((letter, index) => {
       return (
         <span key={index}
-        className={` ${index===0 ? 'active' : ''}`}
+        className={` ${index===0 ? 'active' : ''} ${font}`}
         
         ref={ node => {
           const para = getParagraphs();
@@ -195,8 +204,8 @@ const SpeedTyping = ({i = 0}) => {
 
 
   return (
-    <div className={`relative w-[520px] h-auto px-5 py-5 border border-solid 
-      border-slate-400 rounded-lg text-[${fontSize}px] ${setting.theme === 'Light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
+    <div className={`relative  h-auto px-5 py-5 border border-solid 
+      border-slate-400 rounded-lg ${font} ${setting.theme === 'Light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
       <input ref={inputField} type = "text"
             className = "input-field absolute opacity-0 -z-10"
             value={
